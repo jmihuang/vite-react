@@ -38,7 +38,7 @@ function PostList() {
   // }, []);
 
   return (
-    <div className="post-list">
+    <>
       <MainHeader onCreatePost={isPosting} />
       {!isFetching && posts.length > 0 && (
         <ul className="posts">
@@ -63,7 +63,7 @@ function PostList() {
           <NewPost onCancel={onStopPosting} onSubmit={addPostHandler} />
         </Modal>
       )}
-    </div>
+    </>
   );
 }
 
