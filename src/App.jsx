@@ -1,5 +1,5 @@
 import "./App.scss";
-import PostList from "./component/PostList";
+import PostList from "./component/post/PostList";
 
 function App() {
   return (

@@ -25,17 +25,17 @@ function PostList() {
     console.log(posts);
   };
 
-  useEffect(() => {
-    //load from Data
-    async function fetchPosts() {
-      setIsFetching(true);
-      const response = await fetch("http://localhost:8080/posts");
-      const resData = await response.json();
-      setPosts(resData.posts);
-      setIsFetching(false);
-    }
-    fetchPosts();
-  }, []);
+  // useEffect(() => {
+  //   //load from Data
+  //   async function fetchPosts() {
+  //     setIsFetching(true);
+  //     const response = await fetch("http://localhost:8080/posts");
+  //     const resData = await response.json();
+  //     setPosts(resData.posts);
+  //     setIsFetching(false);
+  //   }
+  //   fetchPosts();
+  // }, []);
 
   return (
     <div className="post-list">
