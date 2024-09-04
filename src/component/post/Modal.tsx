@@ -1,13 +1,17 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 interface Props {
   onBodyChange: (event: any) => void;
   onAuthorChange: (event: any) => void;
-  onClose: (event: any) => void;
 }
-function Modal({ children, onClose }) {
+function Modal({ children }) {
+  const navigate = useNavigate();
+  const closeHandler = () => {
+    navigate("..");
+  };
   return (
     <>
-      <div className="backdrop" onClick={onClose}></div>
+      <div className="backdrop" onClick={closeHandler}></div>
       <dialog open className="modal">
         {children}
       </dialog>

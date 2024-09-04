@@ -22,7 +22,8 @@ ul {
     list-style: none;
   }
 }
-.post-list {
+.container {
+  margin: 0 auto;
   .posts {
     list-style: none;
     max-width: 50rem;
@@ -150,7 +151,7 @@ ul {
 
   .header {
     /* padding: 2rem 10%; */
-    margin: 2rem 10%;
+    margin: 2rem 0;
     padding: 1rem;
     text-align: center;
     display: flex;

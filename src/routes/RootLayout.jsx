@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import MainHeader from "../component/MainHeader";
 function RootLayout() {
   return (
-    <div className="post-list">
+    <div className="container">
       <MainHeader />
       <Outlet />
     </div>

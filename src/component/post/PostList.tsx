@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Post from "./Post";
-import NewPost from "./NewPost";
+import NewPost from "../../routes/NewPost";
 import Modal from "./Modal";
 import MainHeader from "../MainHeader";
 
@@ -39,7 +39,6 @@ function PostList() {
 
   return (
     <>
-      <MainHeader onCreatePost={isPosting} />
       {!isFetching && posts.length > 0 && (
         <ul className="posts">
           {posts.map((post, idx) => (
@@ -58,11 +57,11 @@ function PostList() {
 
       {isFetching && <p>Loading....</p>}
 
-      {modalIsVisible && (
+      {/* {modalIsVisible && (
         <Modal onClose={hideModalHandler}>
           <NewPost onCancel={onStopPosting} onSubmit={addPostHandler} />
         </Modal>
-      )}
+      )} */}
     </>
   );
 }
