@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Post from "./Post";
 import NewPost from "./NewPost";
 import Modal from "./Modal";
-import MainHeader from "./MainHeader";
+import MainHeader from "../MainHeader";
 
 function PostList() {
   const [modalIsVisible, setModalIsVisible] = useState<boolean>(true);
