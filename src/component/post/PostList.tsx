@@ -18,11 +18,11 @@ function PostList() {
     showModalHandler();
   };
   const onStopPosting = () => {
+    console.log("onStopPosting");
     hideModalHandler();
   };
   const addPostHandler = (postData) => {
     setPosts((existingData) => [postData, ...existingData]);
-    console.log(posts);
   };
 
   // useEffect(() => {
@@ -42,8 +42,8 @@ function PostList() {
       <MainHeader onCreatePost={isPosting} />
       {!isFetching && posts.length > 0 && (
         <ul className="posts">
-          {posts.map((post) => (
-            <li>
+          {posts.map((post, idx) => (
+            <li key={idx}>
               <Post author={post.body} body={post.body} />
             </li>
           ))}

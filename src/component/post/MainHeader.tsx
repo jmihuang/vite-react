@@ -4,10 +4,10 @@ import { MdPostAdd, MdMessage } from "react-icons/md";
 function MainHeader({ onCreatePost }) {
   return (
     <header className="header">
-      <h1 className="logo">
-        <MdMessage />
-        React Poster
-      </h1>
+      <ul className="flex-row">
+        <li>Post</li>
+        <li>About</li>
+      </ul>
       <p>
         <button className="button" onClick={onCreatePost}>
           <MdPostAdd size={18} />
