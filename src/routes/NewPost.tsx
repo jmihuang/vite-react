@@ -1,42 +1,21 @@
 import React, { useState } from "react";
 import Modal from "../component/post/Modal";
-import { Link } from "react-router-dom";
+import { Link, Form, redirect } from "react-router-dom";
 interface PostData {
   body: string;
   author: string;
 }
-interface Props {
-  onSubmit: (arg0: PostData) => void;
-}
-function NewPost(props: Props) {
-  const { onSubmit } = props;
-  const [enteredBody, setEnteredBody] = useState<string>("");
-  const [enteredAuthor, setEnteredAuthor] = useState<string>("");
-  const onBodyChange = (event) => {
-    setEnteredBody(event.target.value);
-  };
-  const onAuthorChange = (event) => {
-    setEnteredAuthor(event.target.value);
-  };
-  const submitHandler = (event) => {
-    event.preventDefault();
-
-    const postData = {
-      body: enteredBody,
-      author: enteredAuthor,
-    };
-    onSubmit(postData);
-  };
+function NewPost() {
   return (
     <Modal>
-      <form className="form" onSubmit={submitHandler}>
+      <Form method="post" className="form">
         <p>
           <label htmlFor="body">Text</label>
-          <textarea id="body" required rows={3} onChange={onBodyChange} />
+          <textarea id="body" name="body" required rows={3} />
         </p>
         <p>
           <label htmlFor="name">Your name</label>
-          <input type="text" id="name" required onChange={onAuthorChange} />
+          <input type="text" id="name" name="author" required />
         </p>
         <p className="actions">
           <Link to="/" type="button">
@@ -44,9 +23,22 @@ function NewPost(props: Props) {
           </Link>
           <button>Submit</button>
         </p>
-      </form>
+      </Form>
     </Modal>
   );
 }
 
 export default NewPost;
+
+export async function action({ request }) {
+  const formData = await request.formData();
+  const postData = Object.fromEntries(formData); //{body:'...',author:'...'}
+  await fetch("http://localhost:8080/posts", {
+    method: "POST",
+    body: JSON.stringify(postData),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  return redirect("/");
+}
