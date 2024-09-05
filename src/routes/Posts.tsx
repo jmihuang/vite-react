@@ -5,12 +5,14 @@ import { Outlet } from "react-router-dom";
 import PostList from "../component/post/PostList";
 import { useLoaderData } from "react-router-dom";
 import React from "react";
+interface IPost {
+  userId: string;
+  id: string;
+  title: string;
+  body: string;
+}
 function Posts() {
-  const posts: any = useLoaderData() || {
-    id: "3898888",
-    author: "Jamie",
-    body: "keep going",
-  };
+  const posts: IPost[] = useLoaderData() as IPost[];
 
   return (
     <main className="post-list">
@@ -29,7 +31,8 @@ function Posts() {
 export default Posts;
 
 export async function loader() {
-  const response = await fetch("http://localhost:8080/posts");
+  const response = await fetch("https://jsonplaceholder.typicode.com/posts");
   const resData = await response.json();
-  return resData.post;
+  console.dir("resData", resData);
+  return resData;
 }

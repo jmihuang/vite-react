@@ -23,8 +23,8 @@ function PostDetails() {
   }
   return (
     <Modal>
-      <main className="details">
-        <p className="author">{post.author}</p>
+      <main className="details bg-[#9c7eee]">
+        <p className="title">{post.title}</p>
         <p className="text">{post.body}</p>
       </main>
     </Modal>
@@ -33,8 +33,11 @@ function PostDetails() {
 
 export default PostDetails;
 
-export async function loader(params) {
-  const response = await fetch(`http://localhost:8080/posts/${params.postId}`);
+export async function loader({ params }) {
+  console.log(params);
+  const response = await fetch(
+    `https://jsonplaceholder.typicode.com/posts/${params.postId}`
+  );
   const resData = response.json();
   return resData;
 }

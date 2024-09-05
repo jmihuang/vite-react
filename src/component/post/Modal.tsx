@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 interface Props {
   onBodyChange: (event: any) => void;
-  onAuthorChange: (event: any) => void;
+  ontitleChange: (event: any) => void;
 }
 function Modal({ children }) {
   const navigate = useNavigate();
