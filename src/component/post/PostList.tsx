@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Post from "./Post";
 import { useLoaderData } from "react-router-dom";
 function PostList() {
-  const posts = useLoaderData();
+  const posts: any = useLoaderData();
 
   return (
     <>
