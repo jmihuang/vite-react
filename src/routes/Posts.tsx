@@ -3,7 +3,15 @@ import { MdPostAdd } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import PostList from "../component/post/PostList";
+import { useLoaderData } from "react-router-dom";
+import React from "react";
 function Posts() {
+  const posts: any = useLoaderData() || {
+    id: "3898888",
+    author: "Jamie",
+    body: "keep going",
+  };
+
   return (
     <main className="post-list">
       <p className="flex">
@@ -12,10 +20,16 @@ function Posts() {
           New Post
         </Link>
       </p>
-      <PostList />
+      <PostList posts={posts} />
       <Outlet />
     </main>
   );
 }
 
 export default Posts;
+
+export async function loader() {
+  const response = await fetch("http://localhost:8080/posts");
+  const resData = await response.json();
+  return resData.post;
+}

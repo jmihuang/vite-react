@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { MdPostAdd, MdMessage } from "react-icons/md";
 import { Route, Link } from "react-router-dom";
-function MainHeader({ onCreatePost }) {
+function MainHeader() {
   return (
     <header className="header">
       <ul className="flex flex-row gap-2">
