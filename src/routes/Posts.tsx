@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import PostList from "../component/post/PostList";
 import { useLoaderData } from "react-router-dom";
+import { getData } from "../firebase";
+
 import React from "react";
 interface IPost {
   userId: string;
@@ -31,8 +33,7 @@ function Posts() {
 export default Posts;
 
 export async function loader() {
-  const response = await fetch("https://jsonplaceholder.typicode.com/posts");
-  const resData = await response.json();
-  console.dir("resData", resData);
-  return resData;
+  // Get a reference to the collection
+
+  getData(1);
 }
